@@ -11,7 +11,7 @@ class CheckBoxPage extends StatefulWidget {
 
 class _CheckBoxPageState extends State<CheckBoxPage> {
   final itemCount = 10;
-  late List<bool> isCheckedList = List.generate(itemCount, (index) => false);
+  late List<bool> isChecked = List.generate(itemCount, (index) => false);
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +22,10 @@ class _CheckBoxPageState extends State<CheckBoxPage> {
         itemBuilder: (context, index) {
           return CheckboxListTile(
             title: Text('Option $index'),
-            value: isCheckedList[index],
+            value: isChecked[index],
             onChanged: (bool? value) {
               setState(() {
-                isCheckedList[index] = value ?? false;
+                isChecked[index] = value ?? false;
               });
             },
           );
