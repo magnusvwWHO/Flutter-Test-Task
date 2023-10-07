@@ -1,22 +1,22 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:test_task/routes/router.dart';
-import 'package:test_task/routes/router.gr.dart';
+import 'package:provider/provider.dart';
+import 'package:test_task/main_provider.dart';
+import 'package:test_task/router/router.dart';
 
 void main() => runApp(
-      MyApp(),
+      const MyApp(),
     );
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
-
-  final _appRouter = AppRouter();
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: _appRouter.config(
-          deepLinkBuilder: (deepLink) => const DeepLink([LoginRoute()])),
+    return ChangeNotifierProvider(
+      create: (context) => MainProvider(),
+      builder: (context, child) => MaterialApp.router(
+        routerConfig: router,
+      ),
     );
   }
 }
